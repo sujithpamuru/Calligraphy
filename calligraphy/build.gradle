@@ -1,0 +1,38 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 28
+        versionCode project.ext.versionCodeInt
+        versionName version
+        consumerProguardFiles 'consumer-proguard-rules.txt'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'consumer-proguard-rules.txt'
+        }
+    }
+
+    lintOptions {
+        // we don't always want to use the latest version of the support library
+        disable 'GradleDependency'
+        textOutput 'stdout'
+        textReport System.getenv('CI') == 'true'
+    }
+}
+
+dependencies {
+    compileOnly 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'io.github.inflationx:viewpump:1.0.0'
+
+    testImplementation 'androidx.annotation:annotation:1.0.0'
+    testImplementation 'androidx.test:runner:1.1.0'
+}
+
+apply from: rootProject.file('gradle/deploy.gradle')

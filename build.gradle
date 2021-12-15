@@ -1,0 +1,23 @@
+buildscript {
+  repositories {
+    google()
+    jcenter()
+  }
+  dependencies {
+    classpath 'com.android.tools.build:gradle:3.2.1'
+  }
+}
+
+allprojects {
+  repositories {
+    google()
+    mavenLocal()
+    jcenter()
+  }
+  // Is Release Build?
+  version = getProperty('VERSION_NAME')
+  ext {
+    isReleaseVersion = has("release")
+    versionCodeInt = getProperty('VERSION_CODE').toInteger()
+  }
+}
