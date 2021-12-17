@@ -1,63 +1,44 @@
 package io.github.inflationx.calligraphy3;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.graphics.Typeface;
-import android.os.Build;
-import android.text.TextUtils;
-import android.util.AttributeSet;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.widget.TextView;
+import ohos.app.Context;
 
+import ohos.agp.components.AttrSet;
+import ohos.agp.text.Font;
+import ohos.agp.components.Component.LayoutRefreshedListener;
+import ohos.global.config.ConfigManager;
+import ohos.global.configuration.Configuration;
+import ohos.global.configuration.DeviceCapability;
+import ohos.global.resource.*;
+import ohos.global.resource.solidxml.Pattern;
+import ohos.global.resource.solidxml.SolidXml;
+import ohos.global.resource.solidxml.Theme;
+import ohos.global.resource.solidxml.TypedAttribute;
+import ohos.agp.components.Text;
+import ohos.agp.utils.TextTool;
+import ohos.agp.components.Component;
+
+import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
-
-import androidx.appcompat.widget.Toolbar;
+import java.util.HashMap;
+import java.util.List;
 
 class Calligraphy {
 
     private static final String ACTION_BAR_TITLE = "action_bar_title";
+
     private static final String ACTION_BAR_SUBTITLE = "action_bar_subtitle";
 
     /**
-     * Some styles are in sub styles, such as actionBarTextStyle etc..
-     *
-     * @param view view to check.
-     * @return 2 element array, default to -1 unless a style has been found.
-     */
-    protected int[] getStyleForTextView(TextView view) {
-        final int[] styleIds = new int[]{-1, -1};
-        // Try to find the specific actionbar styles
-        if (isActionBarTitle(view)) {
-            styleIds[0] = android.R.attr.actionBarStyle;
-            styleIds[1] = android.R.attr.titleTextStyle;
-        } else if (isActionBarSubTitle(view)) {
-            styleIds[0] = android.R.attr.actionBarStyle;
-            styleIds[1] = android.R.attr.subtitleTextStyle;
-        }
-        if (styleIds[0] == -1) {
-            // Use TextAppearance as default style
-            styleIds[0] = mCalligraphyConfig.getClassStyles().containsKey(view.getClass())
-                    ? mCalligraphyConfig.getClassStyles().get(view.getClass())
-                    : android.R.attr.textAppearance;
-        }
-        return styleIds;
-    }
-
-    /**
      * An even dirtier way to see if the TextView is part of the ActionBar
      *
      * @param view TextView to check is Title
      * @return true if it is.
      */
-    @SuppressLint("NewApi")
-    protected static boolean isActionBarTitle(TextView view) {
-        if (matchesResourceIdName(view, ACTION_BAR_TITLE)) return true;
-        if (parentIsToolbarV7(view)) {
-            final Toolbar parent = (Toolbar) view.getParent();
-            return TextUtils.equals(parent.getTitle(), view.getText());
+
+    protected static boolean isActionBarTitle(Text view) {
+        if (matchesResourceIdName(view, ACTION_BAR_TITLE)) {
+            return true;
         }
         return false;
     }
@@ -68,18 +49,12 @@ class Calligraphy {
      * @param view TextView to check is Title
      * @return true if it is.
      */
-    @SuppressLint("NewApi")
-    protected static boolean isActionBarSubTitle(TextView view) {
-        if (matchesResourceIdName(view, ACTION_BAR_SUBTITLE)) return true;
-        if (parentIsToolbarV7(view)) {
-            final Toolbar parent = (Toolbar) view.getParent();
-            return TextUtils.equals(parent.getSubtitle(), view.getText());
+
+    protected static boolean isActionBarSubTitle(Text view) {
+        if (matchesResourceIdName(view, ACTION_BAR_SUBTITLE)) {
+            return true;
         }
         return false;
-    }
-
-    protected static boolean parentIsToolbarV7(View view) {
-        return CalligraphyUtils.canCheckForV7Toolbar() && view.getParent() != null && (view.getParent() instanceof Toolbar);
     }
 
     /**
@@ -89,13 +64,17 @@ class Calligraphy {
      * @param matches not null resource name to match against. Its not case sensitive.
      * @return true if matches false otherwise.
      */
-    protected static boolean matchesResourceIdName(View view, String matches) {
-        if (view.getId() == View.NO_ID) return false;
-        final String resourceEntryName = view.getResources().getResourceEntryName(view.getId());
+
+    protected static boolean matchesResourceIdName(Component view, String matches) {
+        if (view.getId() == Component.ID_DEFAULT) {
+            return false;
+        }
+        final String resourceEntryName = view.getResourceManager().toString();
         return resourceEntryName.equalsIgnoreCase(matches);
     }
 
     private final CalligraphyConfig mCalligraphyConfig;
+
     private final int[] mAttributeId;
 
     public Calligraphy(CalligraphyConfig calligraphyConfig) {
@@ -112,57 +91,103 @@ class Calligraphy {
      * @return null if null is passed in.
      */
 
-    public View onViewCreated(View view, Context context, AttributeSet attrs) {
-        if (view != null && view.getTag(R.id.calligraphy_tag_id) != Boolean.TRUE) {
-            onViewCreatedInternal(view, context, attrs);
-            view.setTag(R.id.calligraphy_tag_id, Boolean.TRUE);
+    public Component onViewCreated(Component view, Context context, AttrSet attrs) {
+        if (view != null && view.getTag() != Boolean.TRUE) {
+            onViewCreatedInternal(view, new ResourceManager() {
+                @Override
+                public Resource getResource(int i) throws IOException, NotExistException {
+                    return null;
+                }
+
+                @Override
+                public String getIdentifier(int i) throws IOException, NotExistException {
+                    return null;
+                }
+
+                @Override
+                public Element getElement(int i) throws IOException, NotExistException, WrongTypeException {
+                    return null;
+                }
+
+                @Override
+                public Theme getTheme(int i) throws IOException, NotExistException, WrongTypeException {
+                    return null;
+                }
+
+                @Override
+                public SolidXml getSolidXml(int i) throws IOException, NotExistException, WrongTypeException {
+                    return null;
+                }
+
+                @Override
+                public RawFileEntry getRawFileEntry(String s) {
+                    return null;
+                }
+
+                @Override
+                public ConfigManager getConfigManager() {
+                    return null;
+                }
+
+                @Override
+                public String getMediaPath(int i) throws IOException, NotExistException, WrongTypeException {
+                    return null;
+                }
+
+                @Override
+                public Configuration getConfiguration() {
+                    return null;
+                }
+
+                @Override
+                public DeviceCapability getDeviceCapability() {
+                    return null;
+                }
+
+                @Override
+                public void updateConfiguration(Configuration configuration, DeviceCapability deviceCapability) {
+
+                }
+
+                @Override
+                public Pattern createPattern(List<TypedAttribute.AttrData> list) {
+                    return null;
+                }
+
+                @Override
+                public Theme createTheme(List<TypedAttribute.AttrData> list) {
+                    return null;
+                }
+            }, context, attrs);
+            view.setTag(tagMap);
         }
         return view;
     }
 
-    void onViewCreatedInternal(View view, final Context context, AttributeSet attrs) {
-        if (view instanceof TextView) {
+    void onViewCreatedInternal(Component view, final ResourceManager resourceManager, Context context, AttrSet attrs) {
+        if (view instanceof Text) {
             // Fast path the setting of TextView's font, means if we do some delayed setting of font,
             // which has already been set by use we skip this TextView (mainly for inflating custom,
             // TextView's inside the Toolbar/ActionBar).
-            if (TypefaceUtils.isLoaded(((TextView) view).getTypeface())) {
+            if (TypefaceUtils.isLoaded(((Text) view).getFont())) {
                 return;
             }
             // Try to get typeface attribute value
             // Since we're not using namespace it's a little bit tricky
-
             // Check xml attrs, style attrs and text appearance for font path
             String textViewFont = resolveFontPath(context, attrs);
-
-            // Try theme attributes
-            if (TextUtils.isEmpty(textViewFont)) {
-                final int[] styleForTextView = getStyleForTextView((TextView) view);
-                if (styleForTextView[1] != -1)
-                    textViewFont = CalligraphyUtils.pullFontPathFromTheme(context, styleForTextView[0], styleForTextView[1], mAttributeId);
-                else
-                    textViewFont = CalligraphyUtils.pullFontPathFromTheme(context, styleForTextView[0], mAttributeId);
-            }
-
             textViewFont = applyFontMapper(textViewFont);
-
             // Still need to defer the Native action bar, appcompat-v7:21+ uses the Toolbar underneath. But won't match these anyway.
             final boolean deferred = matchesResourceIdName(view, ACTION_BAR_TITLE) || matchesResourceIdName(view, ACTION_BAR_SUBTITLE);
-
-            CalligraphyUtils.applyFontToTextView(context, (TextView) view, mCalligraphyConfig, textViewFont, deferred);
+            CalligraphyUtils.applyFontToTextView(context, (Text) view, mCalligraphyConfig, textViewFont, deferred);
         }
-
         // AppCompat API21+ The ActionBar doesn't inflate default Title/SubTitle, we need to scan the
         // Toolbar(Which underlies the ActionBar) for its children.
-        if (CalligraphyUtils.canCheckForV7Toolbar() && view instanceof Toolbar) {
-            final Toolbar toolbar = (Toolbar) view;
-            toolbar.getViewTreeObserver().addOnGlobalLayoutListener(new ToolbarLayoutListener(this, context, toolbar));
-        }
-
         // Try to set typeface for custom views using interface method or via reflection if available
         if (view instanceof HasTypeface) {
             String textViewFont = resolveFontPath(context, attrs);
             textViewFont = applyFontMapper(textViewFont);
-            Typeface typeface = getDefaultTypeface(context, textViewFont);
+            Font typeface = getDefaultTypeface(resourceManager, textViewFont);
             if (typeface != null) {
                 ((HasTypeface) view).setTypeface(typeface);
             }
@@ -170,20 +195,19 @@ class Calligraphy {
             final Method setTypeface = ReflectionUtils.getMethod(view.getClass(), "setTypeface");
             String fontPath = resolveFontPath(context, attrs);
             fontPath = applyFontMapper(fontPath);
-            Typeface typeface = getDefaultTypeface(context, fontPath);
+            Font typeface = getDefaultTypeface(resourceManager, fontPath);
             if (setTypeface != null && typeface != null) {
                 ReflectionUtils.invokeMethod(view, setTypeface, typeface);
             }
         }
-
     }
 
-    private Typeface getDefaultTypeface(Context context, String fontPath) {
-        if (TextUtils.isEmpty(fontPath)) {
+    private Font getDefaultTypeface(ResourceManager context, String fontPath) {
+        if (TextTool.isNullOrEmpty(fontPath)) {
             fontPath = mCalligraphyConfig.getFontPath();
         }
-        if (!TextUtils.isEmpty(fontPath)) {
-            return TypefaceUtils.load(context.getAssets(), fontPath);
+        if (!TextTool.isNullOrEmpty(fontPath)) {
+            return TypefaceUtils.load(context, fontPath);
         }
         return null;
     }
@@ -191,20 +215,18 @@ class Calligraphy {
     /**
      * Resolving font path from xml attrs, style attrs or text appearance
      */
-    private String resolveFontPath(Context context, AttributeSet attrs) {
+
+    private String resolveFontPath(Context context, AttrSet attrs) {
         // Try view xml attributes
         String textViewFont = CalligraphyUtils.pullFontPathFromView(context, attrs, mAttributeId);
-
         // Try view style attributes
-        if (TextUtils.isEmpty(textViewFont)) {
+        if (TextTool.isNullOrEmpty(textViewFont)) {
             textViewFont = CalligraphyUtils.pullFontPathFromStyle(context, attrs, mAttributeId);
         }
-
         // Try View TextAppearance
-        if (TextUtils.isEmpty(textViewFont)) {
+        if (TextTool.isNullOrEmpty(textViewFont)) {
             textViewFont = CalligraphyUtils.pullFontPathFromTextAppearance(context, attrs, mAttributeId);
         }
-
         return textViewFont;
     }
 
@@ -213,55 +235,30 @@ class Calligraphy {
         return fontMapper != null ? fontMapper.map(textViewFont) : textViewFont;
     }
 
-    private static class ToolbarLayoutListener implements ViewTreeObserver.OnGlobalLayoutListener {
+    private static class ToolbarLayoutListener implements LayoutRefreshedListener {
 
         static String BLANK = " ";
 
         private final WeakReference<Calligraphy> mCalligraphyFactory;
-        private final WeakReference<Context> mContextRef;
-        private final WeakReference<Toolbar> mToolbarReference;
-        private final CharSequence originalSubTitle;
 
-        private ToolbarLayoutListener(final Calligraphy calligraphy,
-                                      final Context context, Toolbar toolbar) {
+        private final WeakReference<Context> mContextRef;
+
+        private ToolbarLayoutListener(final Calligraphy calligraphy, final Context context) {
             mCalligraphyFactory = new WeakReference<>(calligraphy);
             mContextRef = new WeakReference<>(context);
-            mToolbarReference = new WeakReference<>(toolbar);
-            originalSubTitle = toolbar.getSubtitle();
-            toolbar.setSubtitle(BLANK);
         }
 
-        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-        @Override public void onGlobalLayout() {
-            final Toolbar toolbar = mToolbarReference.get();
+        @Override
+        public void onRefreshed(Component component) {
+            // param mapping start
+            int width = component.getWidth();
+            int height = component.getHeight();
             final Context context = mContextRef.get();
             final Calligraphy factory = mCalligraphyFactory.get();
-            if (toolbar == null) return;
-            if (factory == null || context == null) {
-                removeSelf(toolbar);
-                return;
-            }
 
-            int childCount = toolbar.getChildCount();
-            if (childCount != 0) {
-                // Process children, defer draw as it has set the typeface.
-                for (int i = 0; i < childCount; i++) {
-                    factory.onViewCreated(toolbar.getChildAt(i), context, null);
-                }
-            }
-            removeSelf(toolbar);
-            toolbar.setSubtitle(originalSubTitle);
-        }
-
-        private void removeSelf(final Toolbar toolbar) {// Our dark deed is done
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-                //noinspection deprecation
-                toolbar.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-            } else {
-                toolbar.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-            }
         }
 
     }
 
+    HashMap<Integer, Object> tagMap = new HashMap<>();
 }

@@ -1,0 +1,51 @@
+{
+  "app": {
+    "bundleName": "io.github.inflationx.calligraphy3.hmservice",
+    "vendor": "github",
+    "version": {
+      "code": 1000000,
+      "name": "1.0.0"
+    }
+  },
+  "deviceConfig": {},
+  "module": {
+    "package": "io.github.inflationx.calligraphy3",
+    "name": ".MyApplication",
+    "mainAbility": "io.github.inflationx.calligraphy3.sample.MainAbility",
+    "deviceType": [
+      "phone",
+      "tablet",
+      "tv",
+      "wearable",
+      "car"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "entry",
+      "moduleType": "entry",
+      "installationFree": false
+    },
+    "abilities": [
+      {
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ],
+        "orientation": "unspecified",
+        "visible": true,
+        "name": "io.github.inflationx.calligraphy3.sample.MainAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "$string:calligraphy",
+        "type": "page",
+        "launchType": "standard"
+      }
+    ]
+  }
+}

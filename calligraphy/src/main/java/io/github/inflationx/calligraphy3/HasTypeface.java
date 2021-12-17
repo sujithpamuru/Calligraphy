@@ -1,11 +1,10 @@
 package io.github.inflationx.calligraphy3;
 
-import android.graphics.Typeface;
+import ohos.agp.text.Font;
 
 /**
  * There are two ways to set typeface for custom views:
  * <ul>
- *     <li>Implementing this interface. You should only implements {@link #setTypeface(Typeface)} method.</li>
  *     <li>Or via reflection. If custom view already has setTypeface method you can
  *     register it during Calligraphy configuration
  *     {@link CalligraphyConfig.Builder#addCustomViewWithSetTypeface(Class)}</li>
@@ -17,6 +16,5 @@ import android.graphics.Typeface;
  */
 public interface HasTypeface {
 
-    void setTypeface(Typeface typeface);
-
+    void setTypeface(Font typeface);
 }

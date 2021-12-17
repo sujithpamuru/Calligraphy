@@ -1,38 +1,21 @@
-apply plugin: 'com.android.library'
-
-android {
-    compileSdkVersion 28
-    buildToolsVersion "28.0.3"
-
+apply plugin: 'com.huawei.ohos.library'
+//For instructions on signature configuration, see https://developer.harmonyos.com/en/docs/documentation/doc-guides/ide_debug_device-0000001053822404#section1112183053510
+ohos {
+    compileSdkVersion 6
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 28
-        versionCode project.ext.versionCodeInt
-        versionName version
-        consumerProguardFiles 'consumer-proguard-rules.txt'
+        compatibleSdkVersion 6
     }
-
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'consumer-proguard-rules.txt'
+            proguardOpt {
+                proguardEnabled false
+                rulesFiles 'proguard-rules.pro'
+            }
         }
-    }
-
-    lintOptions {
-        // we don't always want to use the latest version of the support library
-        disable 'GradleDependency'
-        textOutput 'stdout'
-        textReport System.getenv('CI') == 'true'
     }
 }
 
 dependencies {
-    compileOnly 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'io.github.inflationx:viewpump:1.0.0'
-
-    testImplementation 'androidx.annotation:annotation:1.0.0'
-    testImplementation 'androidx.test:runner:1.1.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.13.1'
 }
-
-apply from: rootProject.file('gradle/deploy.gradle')
