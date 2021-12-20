@@ -19,6 +19,10 @@ import io.github.inflationx.calligraphy3.ResourceTable;
 public class PlaceholderFragment extends Fraction {
 
     /**
+     * Component.
+     */
+     public Component component = new Component(getApplicationContext());
+    /**
      * DIALOG_BOX_CORNER_RADIUS.
      */
     public static final float DIALOG_BOX_CORNER_RADIUS = 36.0f;
@@ -41,7 +45,7 @@ public class PlaceholderFragment extends Fraction {
 
     @Override
     protected Component onComponentAttached(LayoutScatter scatter, ComponentContainer container, Intent intent) {
-        Component component = scatter.parse(ResourceTable.Layout_fragment_main, container, false);
+        component = scatter.parse(ResourceTable.Layout_fragment_main, container, false);
         Button button = (Button) component.findComponentById(ResourceTable.Id_button_bold);
         Context context = getFractionAbility();
         button.setClickedListener(new Component.ClickedListener() {
