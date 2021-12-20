@@ -24,6 +24,8 @@ import ohos.agp.components.Text;
 import ohos.agp.text.Font;
 import ohos.app.Context;
 import ohos.app.Environment;
+import ohos.hiviewdfx.HiLog;
+import ohos.hiviewdfx.HiLogLabel;
 import ohos.global.resource.RawFileEntry;
 import ohos.global.resource.Resource;
 import ohos.global.resource.ResourceManager;
@@ -39,8 +41,20 @@ import java.io.OutputStream;
  */
 
 public class MainAbility extends FractionAbility {
+
+	/**
+     * TYPE.
+     */
+    private static final int HILOG_TYPE = 3;
+    /**
+     * DOMAIN.
+     */
+    private static final int HILOG_DOMAIN = 0xD000F00;
+    /**
+     * LABEL.
+     */
+    private static final HiLogLabel LABEL = new HiLogLabel(HILOG_TYPE, HILOG_DOMAIN, "Calligraphy");
     private PlaceholderFragment placeholderFragment;
-	private static final String TAG = "Info Message";
     public static Text text;
 
     @Override
@@ -61,7 +75,7 @@ public class MainAbility extends FractionAbility {
         try {
             resource = rawFileEntry.openRawFile();
         } catch (IOException e) {
-            LogUtil.error(TAG, e.getMessage());
+            HiLog.error(LABEL, "Exception has occured");
         }
         StringBuilder fileName = new StringBuilder(name);
         File file = new File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), fileName.toString());
@@ -73,16 +87,15 @@ public class MainAbility extends FractionAbility {
                 outputStream.flush();
             }
         } catch (FileNotFoundException e) {
-			LogUtil.error(TAG, e.getMessage());
+			HiLog.error(LABEL, "Exception has occured");
         } catch (IOException e) {
-            LogUtil.error(TAG, e.getMessage());
+            HiLog.error(LABEL, "Exception has occured");
         } finally {
             try {
                 resource.close();
             } catch (IOException e) {
-                LogUtil.error(TAG, e.getMessage());
+                HiLog.error(LABEL, "Exception has occured");
             }
-
         }
         Font.Builder builder = new Font.Builder(file);
         return builder.build();
@@ -93,5 +106,4 @@ public class MainAbility extends FractionAbility {
         getFractionManager().startFractionScheduler().replace(
                 ResourceTable.Id_container, placeholderFragment).submit();
     }
-
 }
