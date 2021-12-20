@@ -16,8 +16,6 @@
 
 package io.github.inflationx.calligraphy3.sample;
 
-import io.github.inflationx.calligraphy3.ResourceTable;
-
 import ohos.aafwk.ability.fraction.FractionAbility;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.Text;
@@ -29,7 +27,7 @@ import ohos.hiviewdfx.HiLogLabel;
 import ohos.global.resource.RawFileEntry;
 import ohos.global.resource.Resource;
 import ohos.global.resource.ResourceManager;
-
+import io.github.inflationx.calligraphy3.ResourceTable;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -39,9 +37,7 @@ import java.io.OutputStream;
 /**
  * MainAbility.
  */
-
 public class MainAbility extends FractionAbility {
-
 	/**
      * TYPE.
      */
@@ -66,6 +62,12 @@ public class MainAbility extends FractionAbility {
 
     /**
      * To set Font.
+	 *
+	 * @param context context
+	 *
+	 * @param name name
+	 *
+	 * @return font
      */
 
     public static Font createFont(Context context, String name) {
@@ -75,11 +77,11 @@ public class MainAbility extends FractionAbility {
         try {
             resource = rawFileEntry.openRawFile();
         } catch (IOException e) {
-            HiLog.error(LABEL, "Exception has occured");
+            HiLog.error(LABEL, e.getMessage());
         }
         StringBuilder fileName = new StringBuilder(name);
         File file = new File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), fileName.toString());
-        try (OutputStream outputStream = new FileOutputStream(file)){
+        try (OutputStream outputStream = new FileOutputStream(file)) {
             int index;
             byte[] bytes = new byte[1024];
             while ((index = resource.read(bytes)) != -1) {
@@ -87,14 +89,14 @@ public class MainAbility extends FractionAbility {
                 outputStream.flush();
             }
         } catch (FileNotFoundException e) {
-			HiLog.error(LABEL, "Exception has occured");
+			HiLog.error(LABEL, e.getMessage());
         } catch (IOException e) {
-            HiLog.error(LABEL, "Exception has occured");
+            HiLog.error(LABEL, e.getMessage());
         } finally {
             try {
                 resource.close();
             } catch (IOException e) {
-                HiLog.error(LABEL, "Exception has occured");
+                HiLog.error(LABEL, e.getMessage());
             }
         }
         Font.Builder builder = new Font.Builder(file);

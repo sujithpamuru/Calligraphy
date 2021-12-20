@@ -39,9 +39,9 @@ class ReflectionUtils {
             }
             method.invoke(object, args);
         } catch (IllegalAccessException e) {
-            HiLog.error(LABEL, "Exception has occured");
+            HiLog.error(LABEL, e.getMessage());
         } catch (InvocationTargetException e) {
-            HiLog.error(LABEL, "Exception has occured");
+            HiLog.error(LABEL, e.getMessage());
         }
     }
 }

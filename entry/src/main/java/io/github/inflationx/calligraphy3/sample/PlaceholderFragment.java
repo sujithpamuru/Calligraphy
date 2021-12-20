@@ -1,7 +1,5 @@
 package io.github.inflationx.calligraphy3.sample;
 
-import io.github.inflationx.calligraphy3.ResourceTable;
-
 import ohos.aafwk.ability.fraction.Fraction;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.Button;
@@ -13,16 +11,13 @@ import ohos.agp.components.Text;
 import ohos.agp.components.TextField;
 import ohos.agp.window.dialog.ToastDialog;
 import ohos.app.Context;
+import io.github.inflationx.calligraphy3.ResourceTable;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class PlaceholderFragment extends Fraction {
 
-    /**
-     * Component.
-     */
-    public Component componentContext = new Component(getApplicationContext());
     /**
      * DIALOG_BOX_CORNER_RADIUS.
      */
@@ -62,7 +57,7 @@ public class PlaceholderFragment extends Fraction {
         textTwo.setFont(MainAbility.createFont(context, ROBOTO_BOLD));
         Text textThree = (Text) component.findComponentById(ResourceTable.Id_text_three);
         textThree.setFont(MainAbility.createFont(context, OSWALD_STENCBAB));
-        Text textFour= (Text) component.findComponentById(ResourceTable.Id_text_four);
+        Text textFour = (Text) component.findComponentById(ResourceTable.Id_text_four);
         textFour.setFont(MainAbility.createFont(context, ROBOTO_BOLD));
         Text textSeven = (Text) component.findComponentById(ResourceTable.Id_text_seven);
         textSeven.setFont(MainAbility.createFont(context, OSWALD_STENCBAB));
@@ -83,9 +78,9 @@ public class PlaceholderFragment extends Fraction {
         Button button2 = (Button) component.findComponentById(ResourceTable.Id_button_bold);
         button2.setFont(MainAbility.createFont(context, ROBOTO_BOLD));
         Component customDialogButton = component.findComponentById(ResourceTable.Id_button_default);
-        customDialogButton.setClickedListener(componentContext -> showCustomDialog());
+        customDialogButton.setClickedListener(component -> showCustomDialog());
         Component customDialog = component.findComponentById(ResourceTable.Id_load_absolute);
-        customDialog.setClickedListener(componentContext -> showAbsoluteDialog());
+        customDialog.setClickedListener(component -> showAbsoluteDialog());
         return component;
     }
 

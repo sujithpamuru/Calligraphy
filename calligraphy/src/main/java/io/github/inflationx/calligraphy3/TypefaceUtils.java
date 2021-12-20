@@ -1,7 +1,6 @@
 package io.github.inflationx.calligraphy3;
 
 import ohos.agp.text.Font;
-import ohos.global.resource.ResourceManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +30,7 @@ public final class TypefaceUtils {
         }
         synchronized (sCachedSpans) {
             if (!sCachedSpans.containsKey(typeface)) {
-                final CalligraphyTypefaceSpan span = new CalligraphyTypefaceSpan(typeface);
+                final CalligraphyTypefaceSpan span = new CalligraphyTypefaceSpan();
                 sCachedSpans.put(typeface, span);
                 return span;
             }

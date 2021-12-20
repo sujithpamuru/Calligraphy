@@ -19,15 +19,13 @@ package io.github.inflationx.calligraphy3.sample;
 import static io.github.inflationx.calligraphy3.sample.PlaceholderFragment.DIALOG_BOX_CORNER_RADIUS;
 import static io.github.inflationx.calligraphy3.sample.PlaceholderFragment.DIALOG_BOX_WIDTH;
 import static ohos.agp.components.ComponentContainer.LayoutConfig.MATCH_CONTENT;
-
-import io.github.inflationx.calligraphy3.ResourceTable;
-
 import ohos.agp.components.Component;
 import ohos.agp.components.LayoutScatter;
 import ohos.agp.components.Text;
 import ohos.agp.utils.TextAlignment;
 import ohos.agp.window.dialog.CommonDialog;
 import ohos.app.Context;
+import io.github.inflationx.calligraphy3.ResourceTable;
 
 /**
  * CustomDialog.
