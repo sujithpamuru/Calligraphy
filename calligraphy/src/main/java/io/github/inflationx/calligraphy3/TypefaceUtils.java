@@ -52,9 +52,4 @@ public final class TypefaceUtils {
 
     private TypefaceUtils() {
     }
-
-    public static Font load(ResourceManager assetManager, String filePath) {
-
-        return null;
-    }
 }

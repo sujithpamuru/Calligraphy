@@ -17,6 +17,7 @@
 package io.github.inflationx.calligraphy3.sample;
 
 import io.github.inflationx.calligraphy3.ResourceTable;
+
 import ohos.aafwk.ability.fraction.FractionAbility;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.Text;
@@ -48,6 +49,9 @@ public class MainAbility extends FractionAbility {
         initComponents();
     }
 
+    /**
+     * To set Font.
+     */
 
     public static Font createFont(Context context, String name) {
         ResourceManager resManager = context.getResourceManager();
@@ -61,8 +65,7 @@ public class MainAbility extends FractionAbility {
         StringBuilder fileName = new StringBuilder(name);
         File file = new File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), fileName.toString());
         OutputStream outputStream = null;
-        try {
-            outputStream = new FileOutputStream(file);
+        try (OutputStream outputStream = new FileOutputStream(file);){
             int index;
             byte[] bytes = new byte[1024];
             while ((index = resource.read(bytes)) != -1) {
@@ -74,20 +77,12 @@ public class MainAbility extends FractionAbility {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (resource != null) {
-                try {
-                    resource.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            try {
+                resource.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            if (resource != null) {
-                try {
-                    outputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+
         }
         Font.Builder builder = new Font.Builder(file);
         return builder.build();

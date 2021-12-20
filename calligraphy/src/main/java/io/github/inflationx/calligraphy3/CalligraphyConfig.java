@@ -1,7 +1,7 @@
 package io.github.inflationx.calligraphy3;
 
-import ohos.agp.components.Text;
 import ohos.agp.components.Component;
+import ohos.agp.components.Text;
 import ohos.agp.text.Font;
 import ohos.agp.utils.TextTool;
 

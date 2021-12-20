@@ -29,30 +29,11 @@ import static org.junit.Assert.assertEquals;
 public class ExampleOhosTest {
 
     /**
-     * Context.
-     */
-    public final CalligraphyUtils calligraphyUtils = new CalligraphyUtils();
-
-    /**
-     * Context.
-     */
-    private final PlaceholderFragment placeholderFragment = new PlaceholderFragment();
-
-    /**
      * Test bundle name test case.
      */
     @Test
     public void testBundleName() {
         final String actualBundleName = AbilityDelegatorRegistry.getArguments().getTestBundleName();
         assertEquals("io.github.inflationx.calligraphy3.hmservice", actualBundleName);
-    }
-
-    /**
-     * To test font weight.
-     */
-    @Test
-    public void testTextColor() {
-        int color = calligraphyUtils.getColor();
-        assertEquals("testTextFont", Color.BLACK.getValue(), color);
     }
 }

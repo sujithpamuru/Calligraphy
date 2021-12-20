@@ -7,7 +7,6 @@ import ohos.agp.text.Font;
  */
 
 public class CalligraphyTypefaceSpan {
-
     private final Font typeface;
 
     /**
