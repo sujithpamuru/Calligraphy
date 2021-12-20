@@ -65,7 +65,7 @@ public class MainAbility extends FractionAbility {
         }
         StringBuilder fileName = new StringBuilder(name);
         File file = new File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), fileName.toString());
-        try (OutputStream outputStream = new FileOutputStream(file);){
+        try (OutputStream outputStream = new FileOutputStream(file)){
             int index;
             byte[] bytes = new byte[1024];
             while ((index = resource.read(bytes)) != -1) {
