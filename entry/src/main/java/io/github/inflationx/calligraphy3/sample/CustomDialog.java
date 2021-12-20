@@ -19,7 +19,9 @@ package io.github.inflationx.calligraphy3.sample;
 import static io.github.inflationx.calligraphy3.sample.PlaceholderFragment.DIALOG_BOX_CORNER_RADIUS;
 import static io.github.inflationx.calligraphy3.sample.PlaceholderFragment.DIALOG_BOX_WIDTH;
 import static ohos.agp.components.ComponentContainer.LayoutConfig.MATCH_CONTENT;
+
 import io.github.inflationx.calligraphy3.ResourceTable;
+
 import ohos.agp.components.Component;
 import ohos.agp.components.LayoutScatter;
 import ohos.agp.components.Text;
@@ -28,18 +30,18 @@ import ohos.agp.window.dialog.CommonDialog;
 import ohos.app.Context;
 
 /**
- * CustomDialog.
+ * CustomDialog
  */
 public class CustomDialog extends CommonDialog {
     private Text titleText;
     private Text text;
-    private Text absoluteText;
+    private Text absolute_text;
     private Component confirmButton;
     private ConfirmListener confirmListener;
     private final Context context;
 
     /**
-     * CustomDialog.
+     * CustomDialog
      *
      * @param abilityContext Context
      */
@@ -54,18 +56,18 @@ public class CustomDialog extends CommonDialog {
     }
 
     private void initComponents() {
-        Component customComponent = LayoutScatter.getInstance(context)
+        Component customComponent= LayoutScatter.getInstance(context)
                 .parse(ResourceTable.Layout_custom_dialog_content, null, true);
         titleText = (Text) customComponent.findComponentById(ResourceTable.Id_title_text);
         text = (Text) customComponent.findComponentById(ResourceTable.Id_text);
-        absoluteText = (Text) customComponent.findComponentById(ResourceTable.Id_absolute);
+        absolute_text = (Text) customComponent.findComponentById(ResourceTable.Id_absolute);
         confirmButton = customComponent.findComponentById(ResourceTable.Id_confirm_button);
         super.setContentCustomComponent(customComponent);
         confirm();
     }
 
     /**
-     * set title.
+     * set title
      *
      * @param string String
      */
@@ -74,7 +76,7 @@ public class CustomDialog extends CommonDialog {
     }
 
     /**
-     * set text.
+     * set text
      *
      * @param string String
      */
@@ -83,16 +85,16 @@ public class CustomDialog extends CommonDialog {
     }
 
     /**
-     * set text.
+     * set text
      *
      * @param string String
      */
     public void setAbsoluteText(String string) {
-        absoluteText.setText(string);
+        absolute_text.setText(string);
     }
 
     private String getContent() {
-        return "";
+        return "" ;
     }
 
     private void confirm() {
@@ -104,7 +106,7 @@ public class CustomDialog extends CommonDialog {
     }
 
     /**
-     * setOnConfirmListener.
+     * setOnConfirmListener
      *
      * @param confirm ConfirmListener
      */

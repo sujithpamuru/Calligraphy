@@ -98,4 +98,5 @@ public class MainAbility extends FractionAbility {
         getFractionManager().startFractionScheduler().replace(
                 ResourceTable.Id_container, placeholderFragment).submit();
     }
+
 }
