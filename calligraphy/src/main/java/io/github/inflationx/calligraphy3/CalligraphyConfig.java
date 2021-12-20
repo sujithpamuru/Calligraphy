@@ -1,14 +1,15 @@
 package io.github.inflationx.calligraphy3;
 
+import ohos.agp.components.Text;
+import ohos.agp.components.Component;
+import ohos.agp.text.Font;
+import ohos.agp.utils.TextTool;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-import ohos.agp.components.*;
-import ohos.agp.text.Font;
-import ohos.agp.utils.TextTool;
 
 /**
  * Created by chris on 20/12/2013
@@ -184,13 +185,10 @@ public class CalligraphyConfig {
         /**
          * Add a custom style to get looked up. If you use a custom class that has a parent style
          * which is not part of the default android styles you will need to add it here.
-         * <p>
          * The Calligraphy inflater is unaware of custom styles in your custom classes. We use
          * the class type to look up the style attribute in the theme resources.
-         * <p>
          * So if you had a {@code MyTextField.class} which looked up it's default style as
          * {@code R.attr.textFieldStyle} you would add those here.
-         * <p>
          * {@code builder.addCustomStyle(MyTextField.class,R.attr.textFieldStyle}
          *
          * @param styleClass             the class that related to the parent styleResource. null is ignored.

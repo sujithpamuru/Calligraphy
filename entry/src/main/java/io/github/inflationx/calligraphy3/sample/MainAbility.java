@@ -26,15 +26,16 @@ import ohos.app.Environment;
 import ohos.global.resource.RawFileEntry;
 import ohos.global.resource.Resource;
 import ohos.global.resource.ResourceManager;
-import ohos.hiviewdfx.HiLog;
-import ohos.hiviewdfx.HiLogLabel;
 
-import java.io.IOException;
 import java.io.File;
-import java.io.OutputStream;
-import java.io.FileOutputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
+/**
+ * MainAbility.
+ */
 
 public class MainAbility extends FractionAbility {
     private PlaceholderFragment placeholderFragment;
@@ -47,6 +48,7 @@ public class MainAbility extends FractionAbility {
         initComponents();
     }
 
+
     public static Font createFont(Context context, String name) {
         ResourceManager resManager = context.getResourceManager();
         RawFileEntry rawFileEntry = resManager.getRawFileEntry("resources/rawfile/" + name);
@@ -56,7 +58,7 @@ public class MainAbility extends FractionAbility {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        StringBuffer fileName = new StringBuffer(name);
+        StringBuilder fileName = new StringBuilder(name);
         File file = new File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), fileName.toString());
         OutputStream outputStream = null;
         try {
@@ -72,13 +74,20 @@ public class MainAbility extends FractionAbility {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            try {
-                resource.close();
-                outputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (resource != null) {
+                try {
+                    resource.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-
+            if (resource != null) {
+                try {
+                    outputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         Font.Builder builder = new Font.Builder(file);
         return builder.build();

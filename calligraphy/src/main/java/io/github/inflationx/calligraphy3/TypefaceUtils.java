@@ -1,16 +1,14 @@
 package io.github.inflationx.calligraphy3;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import ohos.agp.text.Font;
 import ohos.global.resource.ResourceManager;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * on pre-ICS versions.
- * <p>
  * More details can be found here https://code.google.com/p/android/issues/detail?id=9904
- * <p>
  * Created by Chris Jenkins on 04/09/13.
  */
 
@@ -19,14 +17,6 @@ public final class TypefaceUtils {
     private static final Map<String, Font> sCachedFonts = new HashMap<String, Font>();
 
     private static final Map<Font, CalligraphyTypefaceSpan> sCachedSpans = new HashMap<Font, CalligraphyTypefaceSpan>();
-
-/**
- * A helper loading a custom font.
- *
- * @param assetManager App's asset manager.
- * @param filePath     The path of the file.
- */
-
 
     /**
      * A helper loading custom spans so we don't have to keep creating hundreds of spans.

@@ -16,9 +16,7 @@
 
 package io.github.inflationx.calligraphy3;
 
-import io.github.inflationx.calligraphy3.sample.PlaceholderFragment;
 import ohos.aafwk.ability.delegation.AbilityDelegatorRegistry;
-import ohos.agp.utils.Color;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -29,30 +27,11 @@ import static org.junit.Assert.assertEquals;
 public class ExampleOhosTest {
 
     /**
-     * Context.
-     */
-    public final CalligraphyUtils calligraphyUtils = new CalligraphyUtils();
-
-    /**
-     * Context.
-     */
-    private final PlaceholderFragment placeholderFragment = new PlaceholderFragment();
-
-    /**
      * Test bundle name test case.
      */
     @Test
     public void testBundleName() {
         final String actualBundleName = AbilityDelegatorRegistry.getArguments().getTestBundleName();
         assertEquals("io.github.inflationx.calligraphy3.hmservice", actualBundleName);
-    }
-
-    /**
-     * To test font weight.
-     */
-    @Test
-    public void testTextColor() {
-        int color = calligraphyUtils.getColor();
-        assertEquals("testTextFont", Color.BLACK.getValue(), color);
     }
 }

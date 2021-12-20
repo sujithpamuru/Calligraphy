@@ -17,11 +17,11 @@
 package io.github.inflationx.calligraphy3.sample;
 
 /**
- * ConfirmListener
+ * ConfirmListener.
  */
 public interface ConfirmListener {
     /**
-     * onConfirmListener
+     * onConfirmListener.
      *
      * @param string String
      */
