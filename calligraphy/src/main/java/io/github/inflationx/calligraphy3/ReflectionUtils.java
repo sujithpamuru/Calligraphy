@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 
 class ReflectionUtils {
 
-    private static final String TAG = ReflectionUtils.class.getSimpleName();
+    private static final String TAG = "Info Message";
 
     static Method getMethod(Class clazz, String methodName) {
         final Method[] methods = clazz.getMethods();
@@ -25,9 +25,9 @@ class ReflectionUtils {
             }
             method.invoke(object, args);
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            LogUtil.error(TAG, e.getMessage());
         } catch (InvocationTargetException e) {
-            e.printStackTrace();
+            LogUtil.error(TAG, e.getMessage());
         }
     }
 }

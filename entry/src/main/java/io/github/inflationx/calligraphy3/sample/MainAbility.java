@@ -40,6 +40,7 @@ import java.io.OutputStream;
 
 public class MainAbility extends FractionAbility {
     private PlaceholderFragment placeholderFragment;
+	private static final String TAG = "Info Message";
     public static Text text;
 
     @Override
@@ -60,7 +61,7 @@ public class MainAbility extends FractionAbility {
         try {
             resource = rawFileEntry.openRawFile();
         } catch (IOException e) {
-            e.printStackTrace();
+            LogUtil.error(TAG, e.getMessage());
         }
         StringBuilder fileName = new StringBuilder(name);
         File file = new File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), fileName.toString());
@@ -72,14 +73,14 @@ public class MainAbility extends FractionAbility {
                 outputStream.flush();
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+			LogUtil.error(TAG, e.getMessage());
         } catch (IOException e) {
-            e.printStackTrace();
+            LogUtil.error(TAG, e.getMessage());
         } finally {
             try {
                 resource.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                LogUtil.error(TAG, e.getMessage());
             }
 
         }
