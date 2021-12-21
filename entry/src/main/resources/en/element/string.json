@@ -26,7 +26,7 @@
     },
     {
       "name": "defined_incorrect",
-      "value": "This has a fontPath set to a font file that does not exist, it goes back to the \n default."
+      "value": "This has a fontPath set to a font file that does not exist, it goes back to the \ndefault."
     },
     {
       "name": "defined_in_style",
@@ -34,7 +34,7 @@
     },
     {
       "name": "defined_in_appears_style",
-      "value": "This has the font path defined in the Styles TextAppearance as Roboto \n Condensed."
+      "value": "This has the font path defined in the Styles TextAppearance as Roboto \nCondensed."
     },
     {
       "name": "text_appearance",

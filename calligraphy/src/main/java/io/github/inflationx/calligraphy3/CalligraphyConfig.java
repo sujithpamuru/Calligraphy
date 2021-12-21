@@ -4,7 +4,6 @@ import ohos.agp.components.Component;
 import ohos.agp.components.Text;
 import ohos.agp.text.Font;
 import ohos.agp.utils.TextTool;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;

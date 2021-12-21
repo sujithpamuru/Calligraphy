@@ -50,8 +50,6 @@ public class MainAbility extends FractionAbility {
      * LABEL.
      */
     private static final HiLogLabel LABEL = new HiLogLabel(HILOG_TYPE, HILOG_DOMAIN, "Calligraphy");
-    private PlaceholderFragment placeholderFragment;
-    public static Text text;
 
     @Override
     public void onStart(Intent intent) {
@@ -102,7 +100,7 @@ public class MainAbility extends FractionAbility {
     }
 
     private void initComponents() {
-        placeholderFragment = new PlaceholderFragment();
+        PlaceholderFragment placeholderFragment = new PlaceholderFragment();
         getFractionManager().startFractionScheduler().replace(
                 ResourceTable.Id_container, placeholderFragment).submit();
     }

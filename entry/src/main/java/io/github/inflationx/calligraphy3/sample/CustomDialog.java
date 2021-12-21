@@ -91,14 +91,12 @@ public class CustomDialog extends CommonDialog {
         absoluteText.setText(string);
     }
 
-    private String getContent() {
-        return "";
-    }
+    static final String BEST_NUMBER = "";
 
     private void confirm() {
         confirmButton.setClickedListener(component -> {
             if (confirmListener != null) {
-                confirmListener.onConfirmListener(getContent());
+                confirmListener.onConfirmListener(BEST_NUMBER);
             }
         });
     }

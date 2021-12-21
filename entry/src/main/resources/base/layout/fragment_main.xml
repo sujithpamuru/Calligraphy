@@ -16,7 +16,7 @@
             ohos:width="match_parent"
             ohos:bottom_margin="16fp"
             ohos:top_margin="16fp"
-            ohos:text_size="15vp"
+            ohos:text_size="13vp"
             ohos:text="$string:default_theme"
         />
 
@@ -26,7 +26,7 @@
             ohos:width="match_parent"
             ohos:bottom_margin="16fp"
             ohos:top_margin="16fp"
-            ohos:text_size="15vp"
+            ohos:text_size="13vp"
             ohos:text="$string:defined_fontpath_view"
         />
 
@@ -36,7 +36,7 @@
             ohos:width="match_parent"
             ohos:bottom_margin="16fp"
             ohos:top_margin="16fp"
-            ohos:text_size="16vp"
+            ohos:text_size="13vp"
             ohos:text="$string:defined_fontpath_view_theme_attr"
             />
         <Text
@@ -45,7 +45,7 @@
             ohos:width="match_parent"
             ohos:bottom_margin="16fp"
             ohos:top_margin="16fp"
-            ohos:text_size="16vp"
+            ohos:text_size="13vp"
             ohos:multiple_lines="true"
             ohos:text="$string:defined_incorrect"
             />
@@ -55,7 +55,7 @@
             ohos:width="match_parent"
             ohos:bottom_margin="16fp"
             ohos:top_margin="15fp"
-            ohos:text_size="15vp"
+            ohos:text_size="13vp"
             ohos:text="$string:defined_in_style"
             />
         <Text
@@ -64,7 +64,7 @@
             ohos:width="match_parent"
             ohos:bottom_margin="16fp"
             ohos:top_margin="16fp"
-            ohos:text_size="17vp"
+            ohos:text_size="13vp"
             ohos:multiple_lines="true"
             ohos:text="$string:defined_in_appears_style"
             />
@@ -75,7 +75,7 @@
             ohos:bottom_margin="16fp"
             ohos:top_margin="16fp"
             ohos:multiple_lines="true"
-            ohos:text_size="19vp"
+            ohos:text_size="15vp"
             ohos:text="$string:text_appearance"
             />
         <Text
@@ -84,7 +84,7 @@
             ohos:width="match_parent"
             ohos:bottom_margin="16fp"
             ohos:top_margin="16fp"
-            ohos:text_size="19vp"
+            ohos:text_size="16vp"
             ohos:text="$string:defined_in_appears"
             />
         <Text
@@ -93,7 +93,7 @@
             ohos:width="match_parent"
             ohos:bottom_margin="16fp"
             ohos:top_margin="16fp"
-            ohos:text_size="20vp"
+            ohos:text_size="17vp"
             ohos:text="$string:defined_in_appears_caps"
             />
         <Text
@@ -102,7 +102,7 @@
             ohos:width="match_parent"
             ohos:bottom_margin="16fp"
             ohos:top_margin="16fp"
-            ohos:text_size="15vp"
+            ohos:text_size="13vp"
             ohos:text="$string:defined_custom_view"
             />
         <Text
@@ -111,7 +111,7 @@
             ohos:width="match_parent"
             ohos:bottom_margin="16fp"
             ohos:top_margin="16fp"
-            ohos:text_size="15vp"
+            ohos:text_size="13vp"
             ohos:text="$string:defined_text"
             />
         <Text
@@ -120,7 +120,7 @@
             ohos:width="match_parent"
             ohos:bottom_margin="16fp"
             ohos:top_margin="16fp"
-            ohos:text_size="16vp"
+            ohos:text_size="13vp"
             ohos:text="$string:font_path_declared"
             />
         <Text
@@ -129,7 +129,7 @@
             ohos:height="match_content"
             ohos:bottom_margin="16fp"
             ohos:top_margin="16fp"
-            ohos:text_size="25vp"
+            ohos:text_size="19vp"
             ohos:text="$string:last_one"/>
 
         <Checkbox
@@ -138,7 +138,7 @@
             ohos:width="match_content"
             ohos:bottom_margin="16fp"
             ohos:top_margin="16fp"
-            ohos:text_size="25vp"
+            ohos:text_size="13vp"
             ohos:check_element="$graphic:checkbox_check_element"
             ohos:text="$string:check_box_text"/>
        <TextField
@@ -155,7 +155,7 @@
             ohos:height="match_content"
             ohos:bottom_margin="16fp"
             ohos:top_margin="16fp"
-            ohos:text_size="16vp"
+            ohos:text_size="13vp"
             ohos:text="$string:text_last"/>
         <Button
             ohos:id="$+id:button_default"

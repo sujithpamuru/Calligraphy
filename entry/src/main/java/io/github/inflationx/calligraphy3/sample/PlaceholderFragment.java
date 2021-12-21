@@ -71,7 +71,7 @@ public class PlaceholderFragment extends Fraction {
         textEleven.setFont(MainAbility.createFont(context, OSWALD_STENCBAB));
         Text textLast = (Text) component.findComponentById(ResourceTable.Id_text_last);
         textLast.setFont(MainAbility.createFont(context, OSWALD_STENCBAB));
-        Checkbox checkbox = (Checkbox) component.findComponentById(ResourceTable.Id_check_box);;
+        Checkbox checkbox = (Checkbox) component.findComponentById(ResourceTable.Id_check_box);
         checkbox.setFont(MainAbility.createFont(context, OSWALD_STENCBAB));
         TextField textField = (TextField) component.findComponentById(ResourceTable.Id_text_field);
         textField.setFont(MainAbility.createFont(context, ROBOTO_BOLD));

@@ -26,7 +26,7 @@
     },
     {
       "name": "defined_incorrect",
-      "value": "This has a fontPath set to a font file that does not exist, it goes back to the default."
+      "value": "This has a fontPath set to a font file that does not exist, it goes back to the \ndefault."
     },
     {
       "name": "defined_in_style",
@@ -34,15 +34,15 @@
     },
     {
       "name": "defined_in_appears_style",
-      "value": "This has the font path defined in the Styles TextAppearance as Roboto Condensed."
+      "value": "This has the font path defined in the Styles TextAppearance as Roboto \nCondensed."
     },
     {
       "name": "text_appearance",
-      "value": "This has the font path defined in the Views TextAppearance as Oswald."
+      "value": "This has the font path defined in the Views TextAppearance as \nOswald."
     },
     {
       "name": "defined_in_appears",
-      "value": "This has the font path defined in the Views TextAppearance as Oswald. textAllCaps is applied."
+      "value": "This has the font path defined in the Views TextAppearance as Oswald..."
     },
     {
       "name": "defined_in_appears_caps",
