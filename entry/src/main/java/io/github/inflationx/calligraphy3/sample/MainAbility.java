@@ -18,7 +18,6 @@ package io.github.inflationx.calligraphy3.sample;
 
 import ohos.aafwk.ability.fraction.FractionAbility;
 import ohos.aafwk.content.Intent;
-import ohos.agp.components.Text;
 import ohos.agp.text.Font;
 import ohos.app.Context;
 import ohos.app.Environment;
