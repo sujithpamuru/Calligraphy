@@ -16,9 +16,9 @@
 
 package io.github.inflationx.calligraphy3.sample;
 
-import io.github.inflationx.calligraphy3.ResourceTable;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
+import io.github.inflationx.calligraphy3.ResourceTable;
 
 /**
  * Default MainAbility class to launch the Application.

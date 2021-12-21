@@ -22,11 +22,11 @@ import ohos.agp.components.Text;
 import ohos.agp.text.Font;
 import ohos.app.Context;
 import ohos.app.Environment;
-import ohos.hiviewdfx.HiLog;
-import ohos.hiviewdfx.HiLogLabel;
 import ohos.global.resource.RawFileEntry;
 import ohos.global.resource.Resource;
 import ohos.global.resource.ResourceManager;
+import ohos.hiviewdfx.HiLog;
+import ohos.hiviewdfx.HiLogLabel;
 import io.github.inflationx.calligraphy3.ResourceTable;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -38,7 +38,7 @@ import java.io.OutputStream;
  * MainAbility.
  */
 public class MainAbility extends FractionAbility {
-	/**
+    /**
      * TYPE.
      */
     private static final int HILOG_TYPE = 3;
@@ -62,12 +62,10 @@ public class MainAbility extends FractionAbility {
 
     /**
      * To set Font.
-	 *
-	 * @param context context
-	 *
-	 * @param name name
-	 *
-	 * @return font
+     *
+     * @param context context
+     * @param name    name
+     * @return font
      */
 
     public static Font createFont(Context context, String name) {
@@ -89,7 +87,7 @@ public class MainAbility extends FractionAbility {
                 outputStream.flush();
             }
         } catch (FileNotFoundException e) {
-			HiLog.error(LABEL, e.getMessage());
+            HiLog.error(LABEL, e.getMessage());
         } catch (IOException e) {
             HiLog.error(LABEL, e.getMessage());
         } finally {
