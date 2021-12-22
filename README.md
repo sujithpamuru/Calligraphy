@@ -1,3 +1,4 @@
+[![.github/workflows/main.yml](https://github.com/applibgroup/Calligraphy/actions/workflows/main.yml/badge.svg)](https://github.com/applibgroup/Calligraphy/actions/workflows/main.yml)
 # Calligraphy
 
 ## Introduction
@@ -16,13 +17,27 @@
 
 ## Installation
 
-In order to use the library, add the following line to your **root** gradle file(entry/build.gradle):
-
-```groovy
-dependencies{
-    implementation fileTree(dir: 'libs', include: ['*.jar', '*.har'])
-    implementation project(path: ':calligraphy')
-    testImplementation 'junit:junit:4.13.1'
+I) For using Calligraphy module in sample app, include the source code and add the below dependencies in entry/build.gradle to generate hap/support.har.
+```
+dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar', '*.har'])
+        implementation project(path: ':calligraphy')
+        testImplementation 'junit:junit:4.13.1'
+}
+```
+II) For using Calligraphy in separate application using har file, add the har file in the entry/libs folder and add the dependencies in entry/build.gradle file.
+```
+dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.har'])
+        testImplementation 'junit:junit:4.13.1'
+}
+```
+III) For using Calligraphy from a remote repository in separate application, add the below dependencies in entry/build.gradle file.
+```
+dependencies {
+        implementation 'dev.applibgroup:calligraphy:1.0.0'
+        testImplementation 'junit:junit:4.13.1'
+        ohosTestImplementation 'com.huawei.ohos.testkit:runner:1.0.0.200'
 }
 ```
 ​
